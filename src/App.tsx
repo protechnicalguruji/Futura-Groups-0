@@ -75,7 +75,7 @@ export default function App() {
       />
 
       {/* 2. Primary Layout Page Sections */}
-      <main className="overflow-x-hidden md:pb-0 pb-20">
+      <main className="overflow-x-hidden md:pb-0 pb-32">
         
         {/* Hero Banner Section */}
         <Hero
