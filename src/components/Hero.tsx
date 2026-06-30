@@ -41,6 +41,8 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
   // Filters State
   const [locationFilter, setLocationFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
+  const [typeFilter, setTypeFilter] = useState('Buy');
+  const [budgetFilter, setBudgetFilter] = useState('');
 
   const handleSearchClick = () => {
     onSearch({ location: locationFilter, status: statusFilter });
@@ -54,6 +56,7 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
 
   const uniqueLocations = Array.from(new Set(PROJECTS_DATA.map(p => p.location)));
   const uniqueStatuses = Array.from(new Set(PROJECTS_DATA.map(p => p.status)));
+  const budgetOptions = ['< 50 Lakhs', '50 Lakhs - 1 Cr', '> 1 Cr'];
 
   return (
     <section id="home" className="relative h-screen min-h-[700px] overflow-hidden bg-brand-primary">
@@ -123,17 +126,34 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
 
         {/* Real Estate Quick Filter Form (Responsive layout) */}
         <div className="absolute bottom-12 left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 max-w-5xl mx-auto bg-white/95 backdrop-blur shadow-2xl rounded-2xl p-6 border border-gray-100 hidden md:block">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
             <div>
               <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 font-sans">
-                Desired Corridor / Area
+                Looking For
+              </label>
+              <div className="flex bg-gray-100 p-1 rounded-lg">
+                {['Buy', 'Rent'].map((type) => (
+                  <button
+                    key={type}
+                    onClick={() => setTypeFilter(type)}
+                    className={`flex-1 py-2 text-sm font-semibold rounded-md ${typeFilter === type ? 'bg-white shadow text-brand-primary' : 'text-gray-500'}`}
+                  >
+                    {type}
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            <div>
+              <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 font-sans">
+                Area
               </label>
               <select
                 value={locationFilter}
                 onChange={(e) => setLocationFilter(e.target.value)}
                 className="w-full bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 text-sm font-medium text-gray-800 outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all font-sans"
               >
-                <option value="">All Regions / Corridors</option>
+                <option value="">Any</option>
                 {uniqueLocations.map((loc) => (
                   <option key={loc} value={loc}>
                     {loc}
@@ -144,17 +164,17 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
 
             <div>
               <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 font-sans">
-                Development Stage
+                Budget
               </label>
               <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
+                value={budgetFilter}
+                onChange={(e) => setBudgetFilter(e.target.value)}
                 className="w-full bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 text-sm font-medium text-gray-800 outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all font-sans"
               >
-                <option value="">All Statuses</option>
-                {uniqueStatuses.map((st) => (
-                  <option key={st} value={st}>
-                    {st}
+                <option value="">Any</option>
+                {budgetOptions.map((b) => (
+                  <option key={b} value={b}>
+                    {b}
                   </option>
                 ))}
               </select>
@@ -164,8 +184,7 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
               onClick={handleSearchClick}
               className="w-full bg-brand-primary hover:bg-brand-secondary text-white font-semibold font-sans py-3.5 rounded-lg text-sm tracking-wide transition-all shadow-md cursor-pointer flex items-center justify-center space-x-2"
             >
-              <span>Explore Projects</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Search</span>
             </button>
           </div>
         </div>

@@ -3,10 +3,15 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import PropertyCategories from './components/PropertyCategories';
 import Services from './components/Services';
 import Amenities from './components/Amenities';
+import Gallery from './components/Gallery';
 import PlotCalculator from './components/PlotCalculator';
 import Testimonials from './components/Testimonials';
+import Statistics from './components/Statistics';
+import FAQ from './components/FAQ';
+import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import EnquiryForm from './components/EnquiryForm';
@@ -88,10 +93,19 @@ export default function App() {
           statusFilter={filters.status}
         />
 
+        {/* Property Categories section */}
+        <PropertyCategories />
+
+        {/* Statistics section */}
+        <Statistics />
+
         {/* Modular Developer Services section */}
         <Services
           onOpenEnquiryModal={handleOpenEnquiryModal}
         />
+
+        {/* Gallery section */}
+        <Gallery />
 
         {/* Premium Amenities section */}
         <Amenities />
@@ -103,6 +117,12 @@ export default function App() {
 
         {/* Client Success Testimonials section */}
         <Testimonials />
+
+        {/* FAQ section */}
+        <FAQ />
+
+        {/* Blog section */}
+        <Blog />
 
         {/* Coordinates and Direct Enquiries form section */}
         <Contact />

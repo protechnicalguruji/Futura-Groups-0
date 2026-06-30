@@ -1,4 +1,4 @@
-import { Building, Phone, Mail, MapPin, ExternalLink } from 'lucide-react';
+import { Building, Phone, Mail, MapPin, ExternalLink, Instagram, Facebook, Twitter, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   const sitemapLinks = [
@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-12 border-b border-white/5">
           
           {/* Column 1: Company Profile Info */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-3 space-y-6">
             <div className="flex items-center space-x-2 cursor-pointer group" onClick={() => handleLinkClick('home')}>
               <div className="w-9 h-9 bg-brand-accent rounded-lg flex items-center justify-center shadow-md">
                 <Building className="w-5 h-5 text-white" />
@@ -44,20 +44,21 @@ export default function Footer() {
             </div>
 
             <p className="text-sm text-gray-300 leading-relaxed max-w-sm">
-              **Futura Groups** (formerly known as Home Ambit) is a premium real estate development and consulting corporation based in Bangalore, specialized in BMRDA/STRR-compliant gated plots, luxury villa builds, and modular interior design.
+              Futura Groups is a premium real estate development and consulting corporation based in Bangalore, specialized in BMRDA/STRR-compliant gated plots, luxury villa builds, and modular interior design.
             </p>
 
-            {/* Core credentials badges */}
-            <div className="flex flex-wrap gap-2 text-[10px] font-bold text-gray-100 uppercase tracking-wider">
-              <span className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-md">RERA Approved layouts</span>
-              <span className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-md">BMRDA Approved</span>
+            {/* Social Links */}
+            <div className="flex space-x-4">
+                {[Instagram, Facebook, Twitter, Linkedin].map((Icon, i) => (
+                    <a key={i} href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent transition-colors"><Icon className="w-4 h-4 text-white" /></a>
+                ))}
             </div>
           </div>
 
           {/* Column 2: Sitemap Quick Navigation Links */}
-          <div className="lg:col-span-3 space-y-6">
+          <div className="lg:col-span-2 space-y-6">
             <h4 className="font-display font-bold text-sm text-white uppercase tracking-widest">
-              Sitemap Links
+              Sitemap
             </h4>
             <ul className="space-y-3 text-sm">
               {sitemapLinks.map((link) => (
@@ -73,10 +74,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Contact quick facts */}
-          <div className="lg:col-span-4 space-y-6">
+          {/* Column 3: Contact */}
+          <div className="lg:col-span-3 space-y-6">
             <h4 className="font-display font-bold text-sm text-white uppercase tracking-widest">
-              Corporate Contacts
+              Contact Us
             </h4>
             <ul className="space-y-4 text-sm text-gray-300">
               <li className="flex items-start space-x-3">
@@ -85,7 +86,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" />
-                <span>+91 80 4680 8080 (Sales Hotline)</span>
+                <span>+91 80 4680 8080</span>
               </li>
               <li className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" />
@@ -93,36 +94,36 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+          
+          {/* Column 4: Map & Newsletter */}
+          <div className="lg:col-span-4 space-y-6">
+            <h4 className="font-display font-bold text-sm text-white uppercase tracking-widest">
+              Location
+            </h4>
+            <div className="bg-white/10 rounded-xl h-32 flex items-center justify-center border border-white/10 text-xs text-gray-500">Google Map Placeholder</div>
+            
+            <h4 className="font-display font-bold text-sm text-white uppercase tracking-widest pt-4">
+              Newsletter
+            </h4>
+            <div className="flex">
+                <input type="email" placeholder="Email Address" className="bg-white/5 border border-white/10 p-3 rounded-l-lg text-sm w-full outline-none text-white" />
+                <button className="bg-brand-accent px-4 py-3 rounded-r-lg text-sm font-semibold text-white">Subscribe</button>
+            </div>
+          </div>
 
-        </div>
-
-        {/* RERA and Legal Disclaimer Paragraph */}
-        <div className="py-8 border-b border-white/5 space-y-4">
-          <span className="text-[10px] font-bold text-brand-accent uppercase tracking-widest block">
-            Regulatory Compliance Notice & Disclaimer
-          </span>
-          <p className="text-[11px] text-gray-400 leading-relaxed text-justify">
-            Disclaimer: All real estate developments, project layout maps, plotted dimensions, floor plans, structural layouts, graphic illustrations, and 3D architectural renders published on this digital platform are representational assets compiled for branding and educational purposes only. Complete specifications, legal allotments, and land boundaries are governed solely by standard sale agreements, registered sale deeds, and Karnataka Real Estate Regulatory Authority (RERA) compliance files. Stamp duty charges and other layout maintenance estimates may undergo revision depending on guidelines issued by regional sub-registrar authorities.
-          </p>
         </div>
 
         {/* Footer bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <p className="text-gray-400">
-            © 2026 **Futura Groups Private Limited** (Formerly Home Ambit). All Rights Reserved.
+            © 2026 Futura Groups Private Limited. All Rights Reserved.
           </p>
           <div className="flex items-center space-x-4">
-            <a href="#site-header" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <span>•</span>
-            <a href="#site-header" className="hover:text-white transition-colors">Terms of Service</a>
-            <span>•</span>
-            <span className="text-gray-400 flex items-center">
-              CIN: U70109KA2021PTC147654 
-              <ExternalLink className="w-3 h-3 ml-1" />
-            </span>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
           </div>
         </div>
-
       </div>
     </footer>
   );
