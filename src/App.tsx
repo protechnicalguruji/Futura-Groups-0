@@ -75,7 +75,7 @@ export default function App() {
       />
 
       {/* 2. Primary Layout Page Sections */}
-      <main className="overflow-x-hidden">
+      <main className="overflow-x-hidden md:pb-0 pb-20">
         
         {/* Hero Banner Section */}
         <Hero
@@ -162,8 +162,8 @@ export default function App() {
         </div>
       )}
 
-      {/* 5. Sticky Floating Callout Buttons (Phone + Brochure) for mobile conversion */}
-      <div className="fixed bottom-6 right-6 z-40 flex flex-col space-y-3 lg:hidden">
+      {/* 5. Sticky Floating Callout Buttons (Phone + Brochure) for desktop conversion */}
+      <div className="fixed bottom-6 right-6 z-40 flex-col space-y-3 hidden md:flex">
         <a
           href="tel:+918046808080"
           className="w-12 h-12 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-105"
@@ -178,6 +178,26 @@ export default function App() {
         >
           <Building2 className="w-5 h-5" />
         </button>
+      </div>
+
+      {/* Mobile Sticky Bottom Action Bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-100 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] pb-[env(safe-area-inset-bottom)]">
+        <div className="flex">
+          <a
+            href="tel:+918884544588"
+            className="flex-1 py-4 text-center font-bold text-brand-primary border-r border-gray-100 flex items-center justify-center gap-2"
+          >
+            📞 Call Now
+          </a>
+          <a
+            href="https://wa.me/918884544588"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 py-4 text-center font-bold text-green-600 flex items-center justify-center gap-2"
+          >
+            💬 WhatsApp
+          </a>
+        </div>
       </div>
 
     </div>
