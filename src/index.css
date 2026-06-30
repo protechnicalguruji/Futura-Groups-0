@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom branding colors */
+  --color-brand-primary: #0B192C;
+  --color-brand-secondary: #1E3E62;
+  --color-brand-accent: #B89047;
+  --color-brand-accent-light: #E2D1B3;
+  --color-brand-text-dark: #111827;
+  --color-brand-bg-light: #F9FAFB;
+}
+
+/* Custom scroll behavior and overall utility styles */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+body {
+  color: var(--color-brand-text-dark);
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Custom selection styling */
+::selection {
+  background-color: var(--color-brand-accent);
+  color: #ffffff;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-accent);
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Futura Groups",
+  "description": "Premium gated community villa plots, modern home construction, and bespoke property services in Bangalore.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
