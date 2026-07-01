@@ -31,14 +31,14 @@ export default function Services({ onOpenEnquiryModal }: ServicesProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="font-sans font-bold text-sm tracking-wider text-brand-accent uppercase block mb-3">
+          <span className="font-sans font-bold text-sm tracking-widest text-brand-accent uppercase block mb-3">
             WHAT WE EXCEL IN
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-primary tracking-tight leading-tight">
+          <h2 className="font-serif font-semibold text-3xl sm:text-4xl text-brand-primary tracking-wide leading-tight">
             End-to-End Solutions Crafted for Exceptional Property Ownership
           </h2>
-          <div className="w-16 h-1 bg-brand-accent mx-auto mt-4 rounded-full" />
-          <p className="font-sans text-gray-500 mt-4 text-base sm:text-lg">
+          <div className="w-16 h-1 bg-brand-accent mx-auto mt-4 rounded-full animate-pulse" />
+          <p className="font-sans text-gray-500 mt-4 text-base sm:text-lg font-light">
             From discovering prime virgin plots in Bangalore\'s boomtowns to completing custom architectural constructions and exquisite modular interiors.
           </p>
         </div>

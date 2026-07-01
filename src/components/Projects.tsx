@@ -58,13 +58,13 @@ export default function Projects({ onOpenEnquiryModal, locationFilter, statusFil
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <span className="font-sans font-bold text-sm tracking-wider text-brand-accent uppercase block mb-3">
+            <span className="font-sans font-bold text-sm tracking-widest text-brand-accent uppercase block mb-3">
               FEATURED DEVELOPMENTS
             </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-primary tracking-tight leading-tight">
+            <h2 className="font-serif font-bold text-3xl sm:text-4xl text-brand-primary tracking-wide leading-tight">
               Elite Gated Layouts Under Futura Groups
             </h2>
-            <p className="font-sans text-gray-500 mt-2 text-base max-w-2xl">
+            <p className="font-sans text-gray-500 mt-2 text-base max-w-2xl font-light">
               Strictly RERA registered layouts featuring elite infrastructure, clear legal verification, and premium structural lifestyle amenities in Bangalore.
             </p>
           </div>
@@ -78,7 +78,7 @@ export default function Projects({ onOpenEnquiryModal, locationFilter, statusFil
                 className={`px-5 py-3 rounded-xl font-sans font-semibold text-sm transition-all cursor-pointer ${
                   selectedProjectId === proj.id
                     ? 'bg-brand-primary text-white shadow-lg'
-                    : 'bg-white text-gray-700 border border-gray-150 hover:bg-gray-50'
+                    : 'bg-white text-gray-700 border border-gray-100 shadow-sm hover:bg-gray-50 hover:shadow'
                 }`}
               >
                 {proj.name}
@@ -115,8 +115,8 @@ export default function Projects({ onOpenEnquiryModal, locationFilter, statusFil
               </div>
 
               {/* Highlights List */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-150 shadow-sm">
-                <h4 className="font-display font-bold text-lg text-brand-primary mb-6">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 royal-shadow">
+                <h4 className="font-serif font-bold text-lg text-brand-primary mb-6">
                   Project Highlights
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -125,7 +125,7 @@ export default function Projects({ onOpenEnquiryModal, locationFilter, statusFil
                       <div className="w-5 h-5 rounded-full bg-brand-accent/15 flex items-center justify-center shrink-0 mt-0.5">
                         <Check className="w-3.5 h-3.5 text-brand-accent" />
                       </div>
-                      <span className="font-sans text-sm text-gray-600 leading-normal">{high}</span>
+                      <span className="font-sans text-sm text-gray-600 leading-normal font-light">{high}</span>
                     </div>
                   ))}
                 </div>
@@ -134,17 +134,17 @@ export default function Projects({ onOpenEnquiryModal, locationFilter, statusFil
 
             {/* Technical Specifications & Description Panel */}
             <div className="lg:col-span-5 space-y-8">
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-150 shadow-sm">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 royal-shadow">
                 <div className="flex items-center space-x-2.5 mb-4 text-gray-500">
                   <MapPin className="w-5 h-5 text-brand-accent" />
                   <span className="font-sans font-semibold text-sm">{selectedProject.sublocation}</span>
                 </div>
 
-                <h3 className="font-display font-bold text-2xl sm:text-3xl text-brand-primary mb-4">
+                <h3 className="font-serif font-bold text-2xl sm:text-3xl text-brand-primary mb-4">
                   {selectedProject.name}
                 </h3>
 
-                <p className="font-sans text-sm text-gray-600 leading-relaxed mb-6">
+                <p className="font-sans text-sm text-gray-600 leading-relaxed mb-6 font-light">
                   {selectedProject.description}
                 </p>
 

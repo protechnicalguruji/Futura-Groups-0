@@ -82,20 +82,20 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center pt-24 z-10">
         <div className="max-w-3xl text-left">
           {/* Animated Badge */}
-          <div className="inline-flex items-center space-x-2 bg-brand-accent/20 border border-brand-accent/45 px-3 py-1.5 rounded-full mb-6">
+          <div className="inline-flex items-center space-x-2 bg-brand-accent/20 border border-brand-accent/40 px-3.5 py-1.5 rounded-full mb-6 shadow-[0_0_15px_rgba(184,144,71,0.1)]">
             <Compass className="w-4 h-4 text-brand-accent animate-spin-slow" />
-            <span className="font-sans font-semibold text-xs tracking-wider text-brand-accent uppercase">
+            <span className="font-sans font-bold text-xs tracking-widest text-brand-accent uppercase">
               {slides[currentSlide].subtitle}
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1] mb-6">
+          <h1 className="font-serif font-semibold text-4xl sm:text-5xl lg:text-6xl text-white tracking-wide leading-[1.15] mb-6 drop-shadow-md">
             {slides[currentSlide].title}
           </h1>
 
           {/* Description */}
-          <p className="font-sans text-base sm:text-lg text-gray-300 leading-relaxed max-w-2xl mb-8">
+          <p className="font-sans text-base sm:text-lg text-gray-300 leading-relaxed max-w-2xl mb-8 font-light">
             {slides[currentSlide].description}
           </p>
 
@@ -103,7 +103,7 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
           <div className="flex flex-wrap gap-4 mb-12">
             <button
               onClick={onOpenEnquiry}
-              className="bg-brand-accent hover:bg-brand-accent/90 text-white font-semibold font-sans px-8 py-4 rounded-xl shadow-lg shadow-brand-accent/30 cursor-pointer flex items-center group transition-all"
+              className="bg-brand-accent hover:bg-brand-accent/95 text-white font-bold font-sans px-8 py-4 rounded-xl shadow-lg shadow-brand-accent/30 cursor-pointer flex items-center group transition-all duration-300 hover:scale-[1.02] hover:shadow-brand-accent/40"
             >
               Get Brochure
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -125,7 +125,7 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
         </div>
 
         {/* Real Estate Quick Filter Form (Responsive layout) */}
-        <div className="absolute bottom-12 left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 max-w-5xl mx-auto bg-white/95 backdrop-blur shadow-2xl rounded-2xl p-6 border border-gray-100 hidden md:block">
+        <div className="absolute bottom-12 left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 max-w-5xl mx-auto glass-panel-light shadow-[0_30px_60px_rgba(11,25,44,0.12)] rounded-3xl p-6 hidden md:block border border-white/45">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
             <div>
               <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 font-sans">

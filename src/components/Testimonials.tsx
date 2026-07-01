@@ -7,14 +7,14 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-sans font-bold text-sm tracking-wider text-brand-accent uppercase block mb-3">
+          <span className="font-sans font-bold text-sm tracking-widest text-brand-accent uppercase block mb-3">
             VERIFIED VOICES
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-primary tracking-tight leading-tight">
+          <h2 className="font-serif font-semibold text-3xl sm:text-4xl text-brand-primary tracking-wide leading-tight">
             Loved by Elite Engineers, Healthcare Specialists, & Investors
           </h2>
-          <div className="w-16 h-1 bg-brand-accent mx-auto mt-4 rounded-full" />
-          <p className="font-sans text-gray-500 mt-4 text-sm sm:text-base">
+          <div className="w-16 h-1 bg-brand-accent mx-auto mt-4 rounded-full animate-pulse" />
+          <p className="font-sans text-gray-500 mt-4 text-sm sm:text-base font-light">
             Read first-hand accounts of families who secured their financial legacy and custom dream homes with the unmatched transparency of Futura Groups.
           </p>
         </div>
@@ -24,7 +24,7 @@ export default function Testimonials() {
           {TESTIMONIALS_DATA.map((test) => (
             <div
               key={test.id}
-              className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-150 shadow-sm relative flex flex-col justify-between group hover:shadow-md transition-all duration-300"
+              className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 royal-shadow royal-shadow-hover relative flex flex-col justify-between group"
             >
               {/* Giant quote icon behind text */}
               <Quote className="absolute right-8 top-8 w-16 h-16 text-gray-50 pointer-events-none group-hover:text-brand-accent/5 transition-colors" />
@@ -38,7 +38,7 @@ export default function Testimonials() {
                 </div>
 
                 {/* Feedback */}
-                <p className="font-sans text-sm sm:text-base text-gray-600 leading-relaxed italic relative z-10">
+                <p className="font-sans text-sm sm:text-base text-gray-600 leading-relaxed italic relative z-10 font-light">
                   "{test.feedback}"
                 </p>
               </div>
@@ -48,10 +48,10 @@ export default function Testimonials() {
                 <img
                   src={test.avatar}
                   alt={test.name}
-                  className="w-12 h-12 rounded-full object-cover border border-gray-150 shadow-inner shrink-0"
+                  className="w-12 h-12 rounded-full object-cover border border-gray-100 shadow-inner shrink-0"
                 />
                 <div>
-                  <h4 className="font-display font-bold text-sm text-brand-primary block leading-none">
+                  <h4 className="font-serif font-bold text-sm text-brand-primary block leading-none">
                     {test.name}
                   </h4>
                   <span className="font-sans text-[11px] text-gray-400 block mt-1.5 leading-tight">

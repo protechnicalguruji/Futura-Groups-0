@@ -40,14 +40,14 @@ export default function Amenities() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-sans font-bold text-sm tracking-wider text-brand-accent uppercase block mb-3">
+          <span className="font-sans font-bold text-sm tracking-widest text-brand-accent uppercase block mb-3">
             WORLD-CLASS ECOSYSTEM
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-primary tracking-tight leading-tight">
+          <h2 className="font-serif font-semibold text-3xl sm:text-4xl text-brand-primary tracking-wide leading-tight">
             Comprehensive Infrastructure Engineered for Sophisticated Living
           </h2>
-          <div className="w-16 h-1 bg-brand-accent mx-auto mt-4 rounded-full" />
-          <p className="font-sans text-gray-500 mt-4 text-base">
+          <div className="w-16 h-1 bg-brand-accent mx-auto mt-4 rounded-full animate-pulse" />
+          <p className="font-sans text-gray-500 mt-4 text-base font-light">
             Every Futura Groups layout is developed with a standardized blueprint of top-tier utilities and leisure installations, ensuring immediate convenience.
           </p>
         </div>

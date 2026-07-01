@@ -72,14 +72,14 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-sans font-bold text-sm tracking-wider text-brand-accent uppercase block mb-3">
+          <span className="font-sans font-bold text-sm tracking-widest text-brand-accent uppercase block mb-3">
             FINANCIAL TRANSPARENCY
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-primary tracking-tight leading-tight">
+          <h2 className="font-serif font-semibold text-3xl sm:text-4xl text-brand-primary tracking-wide leading-tight">
             Interactive Plot Cost & Home Loan EMI Calculator
           </h2>
-          <div className="w-16 h-1 bg-brand-accent mx-auto mt-4 rounded-full" />
-          <p className="font-sans text-gray-500 mt-4 text-sm sm:text-base">
+          <div className="w-16 h-1 bg-brand-accent mx-auto mt-4 rounded-full animate-pulse" />
+          <p className="font-sans text-gray-500 mt-4 text-sm sm:text-base font-light">
             No hidden charges. Simulate layouts, toggle customized villa construction, verify registration fees, and calculate instant monthly EMI paybacks.
           </p>
         </div>
@@ -87,7 +87,7 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
         {/* Master Calculator Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Controls Config (Left Column) */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-gray-150 shadow-sm space-y-8">
+          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 royal-shadow space-y-8">
             
             {/* Step 1: Select Layout */}
             <div className="space-y-4">
@@ -100,13 +100,13 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
                   <button
                     key={proj.id}
                     onClick={() => setSelectedProjectId(proj.id)}
-                    className={`p-4 rounded-xl text-left border cursor-pointer transition-all ${
+                    className={`p-4 rounded-xl text-left border cursor-pointer transition-all duration-300 ${
                       selectedProjectId === proj.id
-                        ? 'border-brand-accent bg-brand-accent/5 ring-1 ring-brand-accent'
-                        : 'border-gray-150 bg-gray-50 hover:bg-gray-100'
+                        ? 'border-brand-accent bg-brand-accent/5 ring-1 ring-brand-accent shadow-sm'
+                        : 'border-gray-100 bg-gray-50 hover:bg-gray-100 hover:shadow-sm'
                     }`}
                   >
-                    <span className="font-display font-bold text-sm text-brand-primary block">{proj.name}</span>
+                    <span className="font-serif font-bold text-sm text-brand-primary block">{proj.name}</span>
                     <span className="font-sans text-[11px] text-gray-500 block mt-1">₹{proj.pricePerSqft} / sq.ft.</span>
                   </button>
                 ))}

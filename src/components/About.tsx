@@ -32,10 +32,10 @@ export default function About() {
         {/* About Headline Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
           <div>
-            <span className="font-sans font-bold text-sm tracking-wider text-brand-accent uppercase block mb-3">
+            <span className="font-sans font-bold text-sm tracking-widest text-brand-accent uppercase block mb-3">
               KNOW FUTURA GROUPS
             </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-primary tracking-tight leading-tight mb-6">
+            <h2 className="font-serif font-semibold text-3xl sm:text-4xl text-brand-primary tracking-wide leading-tight mb-6">
               Shaping Better Lifestyles through Clear Titles, Integrity, & Elegant Planning
             </h2>
             <p className="font-sans text-gray-600 leading-relaxed text-base sm:text-lg mb-6">
@@ -102,7 +102,7 @@ export default function About() {
         {/* Brand Value Props Grid */}
         <div className="border-t border-gray-200/80 pt-16 mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h3 className="font-display font-bold text-2xl text-brand-primary tracking-tight">
+            <h3 className="font-serif font-bold text-2xl sm:text-3xl text-brand-primary tracking-wide">
               The Futura Advantage
             </h3>
             <p className="font-sans text-sm text-gray-500 mt-2">
@@ -116,15 +116,15 @@ export default function About() {
               return (
                 <div
                   key={idx}
-                  className="bg-white rounded-2xl p-8 border border-gray-150 shadow-sm hover:shadow-md transition-all group"
+                  className="bg-white rounded-3xl p-8 border border-gray-100 royal-shadow royal-shadow-hover group"
                 >
-                  <div className="w-12 h-12 bg-brand-primary text-white rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-accent transition-colors">
+                  <div className="w-12 h-12 bg-brand-primary text-white rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-accent transition-all duration-300 shadow-md">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <h4 className="font-display font-bold text-lg text-brand-primary mb-3">
+                  <h4 className="font-serif font-bold text-lg text-brand-primary mb-3 group-hover:text-brand-accent transition-colors">
                     {val.title}
                   </h4>
-                  <p className="font-sans text-sm text-gray-600 leading-relaxed">
+                  <p className="font-sans text-sm text-gray-600 leading-relaxed font-light">
                     {val.description}
                   </p>
                 </div>
