@@ -3,20 +3,20 @@ import { ChevronDown } from 'lucide-react';
 
 const FAQ_DATA = [
   {
-    q: 'Are all Futura Groups projects RERA approved?',
-    a: 'Yes, every plot and villa project under Futura Groups is strictly RERA registered, ensuring complete transparency and legal compliance with the Real Estate Regulatory Authority.'
+    q: 'Are all Futura Groups layouts RERA approved?',
+    a: 'Yes, every single plot and villa community under Futura Groups is strictly RERA registered and certified, guaranteeing complete structural transparency and absolute compliance with regional authority regulations.'
   },
   {
-    q: 'Do you offer assistance with bank loans?',
-    a: 'Absolutely. We have strategic tie-ups with leading national banks like SBI, HDFC, and ICICI to ensure fast-tracked home and plot loan approvals for our clients.'
+    q: 'Do you facilitate bank loan applications?',
+    a: 'Absolutely. We hold long-standing corporate relationships with major nationalized and private banking institutions (including SBI, HDFC, and ICICI) to provide fast-tracked plot and home build loans for our buyers.'
   },
   {
-    q: 'What is the typical timeframe for plot allotment and registration?',
-    a: 'Registration can be initiated immediately upon booking and initial payment. We provide all necessary documentation to fast-track the process.'
+    q: 'What is the standard timeframe for layout allotment registration?',
+    a: 'Registration can be executed instantly upon initial token booking confirmation. Our legal concierge desk prepares all title reports, occupancy clearances, and draft deeds to ensure a swift handover.'
   },
   {
-    q: 'Do you provide maintenance services after possession?',
-    a: 'Yes, we provide up to 10 years of maintenance guarantee on structural works for our constructed villas and oversee the layout maintenance for our plot projects.'
+    q: 'Do you provide structural guarantees on custom villas?',
+    a: 'Yes, we provide up to 10 years of structural engineering warranty for every bespoke villa built under our Turnkey Construction packages, alongside continuing layout estate maintenance.'
   }
 ];
 
@@ -24,28 +24,32 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-24 bg-white">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-24 bg-[#0D1321] border-t border-b border-white/5 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <span className="font-sans font-bold text-sm tracking-wider text-brand-accent uppercase block mb-3">
+          <span className="font-sans font-bold text-xs tracking-wider text-brand-accent uppercase block mb-3">
             KNOW YOUR PROPERTY
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-primary tracking-tight">
-            Frequently Asked Questions
+          <h2 className="font-serif font-semibold text-3xl sm:text-4xl text-white tracking-wide">
+            Frequently Asked <span className="gold-gradient-text">Questions</span>
           </h2>
+          <div className="w-16 h-[1px] bg-brand-accent/40 mx-auto mt-4 rounded-full" />
         </div>
+
         <div className="space-y-4">
           {FAQ_DATA.map((faq, i) => (
-            <div key={i} className="border border-gray-150 rounded-2xl overflow-hidden">
+            <div key={i} className="border border-white/5 rounded-2xl overflow-hidden bg-[#05080E]/40">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between p-6 bg-white hover:bg-gray-50 transition-colors"
+                className="w-full flex items-center justify-between p-6 bg-[#05080E]/10 hover:bg-[#05080E]/60 transition-all text-left cursor-pointer"
               >
-                <span className="font-sans font-semibold text-brand-primary text-left">{faq.q}</span>
-                <ChevronDown className={`w-5 h-5 text-brand-accent transition-transform ${openIndex === i ? 'rotate-180' : ''}`} />
+                <span className="font-serif font-bold text-sm sm:text-base text-white">{faq.q}</span>
+                <ChevronDown className={`w-4 h-4 text-brand-accent transition-transform shrink-0 ${openIndex === i ? 'rotate-180' : ''}`} />
               </button>
               {openIndex === i && (
-                <div className="p-6 pt-0 font-sans text-sm text-gray-600 leading-relaxed border-t border-gray-100 bg-gray-50/50">
+                <div className="p-6 pt-0 font-sans text-xs sm:text-sm text-gray-300 leading-relaxed border-t border-white/5 bg-[#05080E]/40 font-light">
                   {faq.a}
                 </div>
               )}

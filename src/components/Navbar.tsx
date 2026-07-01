@@ -59,10 +59,10 @@ export default function Navbar({ onOpenEnquiryModal, activeSection }: NavbarProp
               <Building className="w-6 h-6 text-white" />
             </div>
             <div>
-              <span className="font-display font-bold text-2xl tracking-tight text-white block leading-none">
+              <span className="font-serif font-semibold text-2xl tracking-widest text-white block leading-none">
                 FUTURA
               </span>
-              <span className="font-sans font-medium text-[10px] tracking-[0.25em] text-brand-accent block leading-none mt-1">
+              <span className="font-sans font-medium text-[9px] tracking-[0.35em] text-brand-accent block leading-none mt-1.5">
                 GROUPS
               </span>
             </div>

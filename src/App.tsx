@@ -181,21 +181,21 @@ export default function App() {
       </div>
 
       {/* Mobile Sticky Bottom Action Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-100 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] pb-[env(safe-area-inset-bottom)]">
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#0D1321]/95 backdrop-blur-md border-t border-brand-accent/20 shadow-[0_-8px_32px_rgba(0,0,0,0.6)] pb-[env(safe-area-inset-bottom)]">
         <div className="flex">
           <a
             href="tel:+918884544588"
-            className="flex-1 py-4 text-center font-bold text-brand-primary border-r border-gray-100 flex items-center justify-center gap-2"
+            className="flex-1 py-4 text-center font-serif font-bold text-xs tracking-wider uppercase text-white hover:text-brand-accent border-r border-white/5 flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
-            📞 Call Now
+            <span className="text-brand-accent text-sm">📞</span> Call Now
           </a>
           <a
             href="https://wa.me/918884544588"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 py-4 text-center font-bold text-green-600 flex items-center justify-center gap-2"
+            className="flex-1 py-4 text-center font-serif font-bold text-xs tracking-wider uppercase text-brand-accent hover:text-white flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
-            💬 WhatsApp
+            <span className="text-sm">💬</span> WhatsApp
           </a>
         </div>
       </div>

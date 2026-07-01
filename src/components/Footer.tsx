@@ -21,7 +21,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-brand-primary text-gray-400 font-sans border-t border-white/5 pt-16 pb-8">
+    <footer className="bg-[#05080E] text-gray-400 font-sans border-t border-white/5 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Grid */}
@@ -29,43 +29,43 @@ export default function Footer() {
           
           {/* Column 1: Company Profile Info */}
           <div className="lg:col-span-3 space-y-6">
-            <div className="flex items-center space-x-2 cursor-pointer group" onClick={() => handleLinkClick('home')}>
-              <div className="w-9 h-9 bg-brand-accent rounded-lg flex items-center justify-center shadow-md">
+            <div className="flex items-center space-x-2.5 cursor-pointer group" onClick={() => handleLinkClick('home')}>
+              <div className="w-9 h-9 bg-brand-accent rounded-lg flex items-center justify-center shadow-lg">
                 <Building className="w-5 h-5 text-white" />
               </div>
               <div>
-                <span className="font-display font-bold text-xl tracking-tight text-white block leading-none">
+                <span className="font-serif font-semibold text-xl tracking-wide text-white block leading-none">
                   FUTURA
                 </span>
-                <span className="font-sans font-medium text-[9px] tracking-[0.25em] text-brand-accent block leading-none mt-1">
+                <span className="font-sans font-bold text-[9px] tracking-[0.25em] text-brand-accent block leading-none mt-1">
                   GROUPS
                 </span>
               </div>
             </div>
 
-            <p className="text-sm text-gray-300 leading-relaxed max-w-sm">
-              Futura Groups is a premium real estate development and consulting corporation based in Bangalore, specialized in BMRDA/STRR-compliant gated plots, luxury villa builds, and modular interior design.
+            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-sm font-light">
+              Futura Groups is a premium real estate development and consulting corporation based in Bangalore, specialized in BMRDA/STRR-compliant gated plots, luxury villa builds, and bespoke modular interior designs.
             </p>
 
             {/* Social Links */}
-            <div className="flex space-x-4">
-                {[Instagram, Facebook, Twitter, Linkedin].map((Icon, i) => (
-                    <a key={i} href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent transition-colors"><Icon className="w-4 h-4 text-white" /></a>
-                ))}
+            <div className="flex space-x-3">
+              {[Instagram, Facebook, Twitter, Linkedin].map((Icon, i) => (
+                <a key={i} href="#" className="w-8 h-8 rounded-full bg-white/5 border border-white/5 flex items-center justify-center hover:bg-brand-accent hover:border-transparent transition-all"><Icon className="w-4 h-4 text-white" /></a>
+              ))}
             </div>
           </div>
 
           {/* Column 2: Sitemap Quick Navigation Links */}
           <div className="lg:col-span-2 space-y-6">
-            <h4 className="font-display font-bold text-sm text-white uppercase tracking-widest">
+            <h4 className="font-serif font-bold text-sm text-white uppercase tracking-widest">
               Sitemap
             </h4>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-3 text-xs sm:text-sm">
               {sitemapLinks.map((link) => (
                 <li key={link.id}>
                   <button
                     onClick={() => handleLinkClick(link.id)}
-                    className="hover:text-brand-accent transition-colors cursor-pointer text-left font-medium"
+                    className="hover:text-brand-accent text-gray-400 transition-colors cursor-pointer text-left font-light"
                   >
                     {link.name}
                   </button>
@@ -76,38 +76,40 @@ export default function Footer() {
 
           {/* Column 3: Contact */}
           <div className="lg:col-span-3 space-y-6">
-            <h4 className="font-display font-bold text-sm text-white uppercase tracking-widest">
+            <h4 className="font-serif font-bold text-sm text-white uppercase tracking-widest">
               Contact Us
             </h4>
-            <ul className="space-y-4 text-sm text-gray-300">
+            <ul className="space-y-4 text-xs sm:text-sm text-gray-300 font-light">
               <li className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" />
-                <span>Sector 4, HSR Layout, Bangalore, KA, India</span>
+                <MapPin className="w-4 h-4 text-brand-accent shrink-0 mt-0.5" />
+                <span className="text-gray-400">Sector 4, HSR Layout, Bangalore, KA, India</span>
               </li>
               <li className="flex items-start space-x-3">
-                <Phone className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" />
-                <span>+91 80 4680 8080</span>
+                <Phone className="w-4 h-4 text-brand-accent shrink-0 mt-0.5" />
+                <span className="text-gray-400">+91 88845 44588</span>
               </li>
               <li className="flex items-start space-x-3">
-                <Mail className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" />
-                <span>sales@futuragroups.com</span>
+                <Mail className="w-4 h-4 text-brand-accent shrink-0 mt-0.5" />
+                <span className="text-gray-400">sales@futuragroups.com</span>
               </li>
             </ul>
           </div>
           
-          {/* Column 4: Map & Newsletter */}
+          {/* Column 4: Location & Newsletter */}
           <div className="lg:col-span-4 space-y-6">
-            <h4 className="font-display font-bold text-sm text-white uppercase tracking-widest">
-              Location
+            <h4 className="font-serif font-bold text-sm text-white uppercase tracking-widest">
+              Corporate Desk
             </h4>
-            <div className="bg-white/10 rounded-xl h-32 flex items-center justify-center border border-white/10 text-xs text-gray-500">Google Map Placeholder</div>
             
-            <h4 className="font-display font-bold text-sm text-white uppercase tracking-widest pt-4">
-              Newsletter
-            </h4>
-            <div className="flex">
-                <input type="email" placeholder="Email Address" className="bg-white/5 border border-white/10 p-3 rounded-l-lg text-sm w-full outline-none text-white" />
-                <button className="bg-brand-accent px-4 py-3 rounded-r-lg text-sm font-semibold text-white">Subscribe</button>
+            <div className="flex flex-col space-y-4">
+              <p className="text-xs text-gray-400 leading-relaxed font-light">
+                Subscribe to our private investor newsletters to receive instant gated community launch announcements and off-market pre-sales brochure packets.
+              </p>
+              
+              <div className="flex">
+                <input type="email" placeholder="Email Address" className="bg-[#0D1321] border border-white/5 p-3 rounded-l-lg text-xs sm:text-sm w-full outline-none text-white placeholder-gray-600 focus:border-brand-accent transition-all" />
+                <button className="bg-brand-accent hover:bg-brand-accent/90 px-4 py-3 rounded-r-lg text-xs sm:text-sm font-bold text-white uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-brand-accent/15">Subscribe</button>
+              </div>
             </div>
           </div>
 
@@ -115,10 +117,10 @@ export default function Footer() {
 
         {/* Footer bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <p className="text-gray-400">
-            © 2026 Futura Groups Private Limited. All Rights Reserved.
+          <p className="text-gray-500 font-light">
+            © 2026 Futura Groups Private Limited. All Rights Reserved. Co-branded with elite developers.
           </p>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 text-gray-500 font-light">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <span>•</span>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>

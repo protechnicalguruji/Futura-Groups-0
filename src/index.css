@@ -8,27 +8,27 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
   /* Custom branding colors */
-  --color-brand-primary: #0B192C;
-  --color-brand-secondary: #1E3E62;
+  --color-brand-primary: #05080E;
+  --color-brand-secondary: #0D1321;
   --color-brand-accent: #B89047;
   --color-brand-accent-light: #E2D1B3;
-  --color-brand-text-dark: #111827;
-  --color-brand-bg-light: #F9FAFB;
+  --color-brand-text-dark: #F1F5F9;
+  --color-brand-bg-light: #0B0F19;
 }
 
 /* Custom premium styles inspired by the reference empire real estate aesthetics */
 .glass-panel {
-  background: rgba(11, 25, 44, 0.7);
+  background: rgba(13, 19, 33, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(13, 19, 33, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(11, 25, 44, 0.05);
+  border: 1px solid rgba(184, 144, 71, 0.15);
 }
 
 .gold-gradient-text {
@@ -42,7 +42,7 @@
 }
 
 .royal-shadow {
-  box-shadow: 0 20px 40px -15px rgba(11, 25, 44, 0.08);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
 }
 
 .royal-shadow-hover {
@@ -51,7 +51,7 @@
 .royal-shadow-hover:hover {
   transform: translateY(-6px);
   box-shadow: 0 30px 60px -12px rgba(184, 144, 71, 0.15);
-  border-color: rgba(184, 144, 71, 0.3);
+  border-color: rgba(184, 144, 71, 0.4);
 }
 
 /* Custom scroll behavior and overall utility styles */
@@ -62,7 +62,7 @@ html {
 
 body {
   color: var(--color-brand-text-dark);
-  background-color: #ffffff;
+  background-color: #05080E;
   overflow-x: hidden;
 }
 

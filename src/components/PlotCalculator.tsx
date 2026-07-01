@@ -25,13 +25,13 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
   const basePricePerSqft = selectedProject.pricePerSqft;
   const plotCost = sqftArea * basePricePerSqft;
   
-  // Construction pricing: standard quality in Bangalore is ~₹1,850 per sqft
+  // Construction pricing: standard quality
   const constructionCost = includeConstruction ? sqftArea * 1850 : 0;
   
   const infraCharges = 150000; // Standard layout maintenance, water connection, and electrical deposit
   const subTotal = plotCost + constructionCost + infraCharges;
 
-  // Stamp Duty & Registration in Bangalore (Approx 5.6% total)
+  // Stamp Duty & Registration (Approx 5.6% total)
   const stampDutyAndReg = Math.round(plotCost * 0.056);
   const totalEstimatedCost = subTotal + stampDutyAndReg;
 
@@ -68,31 +68,33 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
   };
 
   return (
-    <section id="calculator" className="py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="calculator" className="py-24 bg-[#05080E] border-t border-b border-white/5 relative overflow-hidden">
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-sans font-bold text-sm tracking-widest text-brand-accent uppercase block mb-3">
+          <span className="font-sans font-bold text-xs tracking-widest text-brand-accent uppercase block mb-3">
             FINANCIAL TRANSPARENCY
           </span>
-          <h2 className="font-serif font-semibold text-3xl sm:text-4xl text-brand-primary tracking-wide leading-tight">
-            Interactive Plot Cost & Home Loan EMI Calculator
+          <h2 className="font-serif font-semibold text-3xl sm:text-4xl text-white tracking-wide leading-tight">
+            Interactive Cost & <span className="gold-gradient-text">Home Loan EMI Calculator</span>
           </h2>
-          <div className="w-16 h-1 bg-brand-accent mx-auto mt-4 rounded-full animate-pulse" />
-          <p className="font-sans text-gray-500 mt-4 text-sm sm:text-base font-light">
-            No hidden charges. Simulate layouts, toggle customized villa construction, verify registration fees, and calculate instant monthly EMI paybacks.
+          <div className="w-16 h-[1px] bg-brand-accent/50 mx-auto mt-4 rounded-full" />
+          <p className="font-sans text-gray-400 mt-4 text-sm sm:text-base font-light max-w-2xl mx-auto leading-relaxed">
+            Configure land layout sizes, simulate bespoke home construction costs, estimate government registration stamps, and calculate monthly EMI payback breakdowns.
           </p>
         </div>
 
         {/* Master Calculator Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Controls Config (Left Column) */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 royal-shadow space-y-8">
+          <div className="lg:col-span-7 bg-[#0D1321]/50 rounded-3xl p-6 sm:p-8 border border-white/5 shadow-2xl space-y-8 backdrop-blur-md">
             
             {/* Step 1: Select Layout */}
             <div className="space-y-4">
               <span className="flex items-center space-x-2.5 text-xs font-bold text-brand-accent uppercase tracking-wider font-sans">
-                <span className="w-5 h-5 rounded-full bg-brand-accent text-white flex items-center justify-center text-[10px]">1</span>
+                <span className="w-5 h-5 rounded-full bg-brand-accent/15 border border-brand-accent/30 text-brand-accent flex items-center justify-center text-[10px] font-bold">1</span>
                 <span>Select Development Project</span>
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -102,12 +104,12 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
                     onClick={() => setSelectedProjectId(proj.id)}
                     className={`p-4 rounded-xl text-left border cursor-pointer transition-all duration-300 ${
                       selectedProjectId === proj.id
-                        ? 'border-brand-accent bg-brand-accent/5 ring-1 ring-brand-accent shadow-sm'
-                        : 'border-gray-100 bg-gray-50 hover:bg-gray-100 hover:shadow-sm'
+                        ? 'border-brand-accent bg-brand-accent/10 shadow-[0_0_15px_rgba(184,144,71,0.1)]'
+                        : 'border-white/5 bg-[#05080E]/40 hover:bg-[#05080E]/80 hover:border-white/10'
                     }`}
                   >
-                    <span className="font-serif font-bold text-sm text-brand-primary block">{proj.name}</span>
-                    <span className="font-sans text-[11px] text-gray-500 block mt-1">₹{proj.pricePerSqft} / sq.ft.</span>
+                    <span className="font-serif font-bold text-sm text-white block truncate">{proj.name}</span>
+                    <span className="font-sans text-[11px] text-brand-accent block mt-1 font-medium">₹{proj.pricePerSqft} / sq.ft.</span>
                   </button>
                 ))}
               </div>
@@ -116,7 +118,7 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
             {/* Step 2: Choose Plot Dimensions */}
             <div className="space-y-4">
               <span className="flex items-center space-x-2.5 text-xs font-bold text-brand-accent uppercase tracking-wider font-sans">
-                <span className="w-5 h-5 rounded-full bg-brand-accent text-white flex items-center justify-center text-[10px]">2</span>
+                <span className="w-5 h-5 rounded-full bg-brand-accent/15 border border-brand-accent/30 text-brand-accent flex items-center justify-center text-[10px] font-bold">2</span>
                 <span>Choose Plot Sizing Area</span>
               </span>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -124,34 +126,34 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
                   onClick={() => setDimensionPreset(1200)}
                   className={`p-3.5 rounded-xl text-center border cursor-pointer transition-all ${
                     dimensionPreset === 1200
-                      ? 'border-brand-accent bg-brand-accent/5 ring-1 ring-brand-accent'
-                      : 'border-gray-150 bg-gray-50'
+                      ? 'border-brand-accent bg-brand-accent/10 text-white'
+                      : 'border-white/5 bg-[#05080E]/40 text-gray-400 hover:text-white'
                   }`}
                 >
-                  <span className="font-mono text-xs font-bold text-brand-primary block">30 x 40</span>
-                  <span className="font-sans text-[10px] text-gray-500 block mt-1">1,200 sq.ft.</span>
+                  <span className="font-mono text-xs font-bold block">30 x 40</span>
+                  <span className="font-sans text-[10px] block mt-1">1,200 sq.ft.</span>
                 </button>
                 <button
                   onClick={() => setDimensionPreset(1500)}
                   className={`p-3.5 rounded-xl text-center border cursor-pointer transition-all ${
                     dimensionPreset === 1500
-                      ? 'border-brand-accent bg-brand-accent/5 ring-1 ring-brand-accent'
-                      : 'border-gray-150 bg-gray-50'
+                      ? 'border-brand-accent bg-brand-accent/10 text-white'
+                      : 'border-white/5 bg-[#05080E]/40 text-gray-400 hover:text-white'
                   }`}
                 >
-                  <span className="font-mono text-xs font-bold text-brand-primary block">30 x 50</span>
-                  <span className="font-sans text-[10px] text-gray-500 block mt-1">1,500 sq.ft.</span>
+                  <span className="font-mono text-xs font-bold block">30 x 50</span>
+                  <span className="font-sans text-[10px] block mt-1">1,500 sq.ft.</span>
                 </button>
                 <button
                   onClick={() => setDimensionPreset(2400)}
                   className={`p-3.5 rounded-xl text-center border cursor-pointer transition-all ${
                     dimensionPreset === 2400
-                      ? 'border-brand-accent bg-brand-accent/5 ring-1 ring-brand-accent'
-                      : 'border-gray-150 bg-gray-50'
+                      ? 'border-brand-accent bg-brand-accent/10 text-white'
+                      : 'border-white/5 bg-[#05080E]/40 text-gray-400 hover:text-white'
                   }`}
                 >
-                  <span className="font-mono text-xs font-bold text-brand-primary block">40 x 60</span>
-                  <span className="font-sans text-[10px] text-gray-500 block mt-1">2,400 sq.ft.</span>
+                  <span className="font-mono text-xs font-bold block">40 x 60</span>
+                  <span className="font-sans text-[10px] block mt-1">2,400 sq.ft.</span>
                 </button>
                 <button
                   onClick={() => {
@@ -160,21 +162,21 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
                   }}
                   className={`p-3.5 rounded-xl text-center border cursor-pointer transition-all ${
                     dimensionPreset === 0
-                      ? 'border-brand-accent bg-brand-accent/5 ring-1 ring-brand-accent'
-                      : 'border-gray-150 bg-gray-50'
+                      ? 'border-brand-accent bg-brand-accent/10 text-white'
+                      : 'border-white/5 bg-[#05080E]/40 text-gray-400 hover:text-white'
                   }`}
                 >
-                  <span className="font-sans text-xs font-bold text-brand-primary block">Custom Size</span>
-                  <span className="font-sans text-[10px] text-gray-500 block mt-1">Choose manually</span>
+                  <span className="font-sans text-xs font-bold block">Custom Size</span>
+                  <span className="font-sans text-[10px] block mt-1">Manual slider</span>
                 </button>
               </div>
 
               {/* Range Slider for Custom Sizing */}
               {dimensionPreset === 0 && (
-                <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 animate-fade-in space-y-3">
+                <div className="bg-[#05080E]/40 p-4 rounded-2xl border border-white/5 animate-fade-in space-y-3">
                   <div className="flex justify-between items-center text-sm font-semibold font-sans">
-                    <span className="text-gray-500">Custom Land Area:</span>
-                    <span className="text-brand-primary font-mono">{customSqft} sq.ft.</span>
+                    <span className="text-gray-400">Custom Land Area:</span>
+                    <span className="text-brand-accent font-mono">{customSqft} sq.ft.</span>
                   </div>
                   <input
                     type="range"
@@ -183,9 +185,9 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
                     step="50"
                     value={customSqft}
                     onChange={(e) => setCustomSqft(parseInt(e.target.value))}
-                    className="w-full accent-brand-accent h-1.5 bg-gray-200 rounded-lg cursor-pointer"
+                    className="w-full accent-brand-accent h-1.5 bg-gray-800 rounded-lg cursor-pointer"
                   />
-                  <div className="flex justify-between text-[10px] font-mono text-gray-400">
+                  <div className="flex justify-between text-[10px] font-mono text-gray-500">
                     <span>1,000 sq.ft.</span>
                     <span>2,500 sq.ft.</span>
                     <span>4,000 sq.ft.</span>
@@ -197,23 +199,23 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
             {/* Step 3: Turnkey Construction Toggle */}
             <div className="space-y-4">
               <span className="flex items-center space-x-2.5 text-xs font-bold text-brand-accent uppercase tracking-wider font-sans">
-                <span className="w-5 h-5 rounded-full bg-brand-accent text-white flex items-center justify-center text-[10px]">3</span>
+                <span className="w-5 h-5 rounded-full bg-brand-accent/15 border border-brand-accent/30 text-brand-accent flex items-center justify-center text-[10px] font-bold">3</span>
                 <span>Bespoke House Construction</span>
               </span>
               <div
                 onClick={() => setIncludeConstruction(!includeConstruction)}
                 className={`p-5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between gap-4 ${
                   includeConstruction
-                    ? 'border-brand-accent bg-brand-accent/5'
-                    : 'border-gray-150 bg-gray-50 hover:bg-gray-100'
+                    ? 'border-brand-accent/30 bg-brand-accent/5'
+                    : 'border-white/5 bg-[#05080E]/40 hover:bg-[#05080E]/60'
                 }`}
               >
                 <div>
-                  <h4 className="font-display font-bold text-sm text-brand-primary">
+                  <h4 className="font-serif font-bold text-sm text-white">
                     I want to add Turnkey Villa Construction
                   </h4>
-                  <p className="font-sans text-xs text-gray-500 leading-normal mt-1">
-                    Adds structural building cost estimated at ₹1,850 per sq.ft. (A-grade materials, modular kitchen fittings, modular TV backdrop, wardrobes, paint handover).
+                  <p className="font-sans text-xs text-gray-400 leading-normal mt-1 font-light">
+                    Adds structural building cost estimated at ₹1,850 per sq.ft. Includes premium material specs, modular interior setups, painted wall handovers, and full sanitation fitments.
                   </p>
                 </div>
                 <div className="relative shrink-0">
@@ -228,18 +230,18 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
             </div>
 
             {/* Step 4: Loan Parameters Sliders */}
-            <div className="border-t border-gray-150 pt-6 space-y-6">
+            <div className="border-t border-white/5 pt-6 space-y-6">
               <span className="flex items-center space-x-2.5 text-xs font-bold text-brand-accent uppercase tracking-wider font-sans">
-                <span className="w-5 h-5 rounded-full bg-brand-accent text-white flex items-center justify-center text-[10px]">4</span>
+                <span className="w-5 h-5 rounded-full bg-brand-accent/15 border border-brand-accent/30 text-brand-accent flex items-center justify-center text-[10px] font-bold">4</span>
                 <span>Configure Home Loan Options</span>
               </span>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {/* Down Payment slider */}
                 <div className="space-y-2">
-                  <div className="flex justify-between text-xs font-semibold text-gray-500 font-sans">
+                  <div className="flex justify-between text-xs font-semibold text-gray-400 font-sans">
                     <span>Down Payment</span>
-                    <span className="font-mono text-brand-primary">{formatRupees(downPayment)}</span>
+                    <span className="font-mono text-white">{formatRupees(downPayment)}</span>
                   </div>
                   <input
                     type="range"
@@ -248,18 +250,18 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
                     step={25000}
                     value={downPayment}
                     onChange={(e) => setDownPayment(parseInt(e.target.value))}
-                    className="w-full accent-brand-accent h-1.5 bg-gray-200 rounded-lg cursor-pointer"
+                    className="w-full accent-brand-accent h-1.5 bg-gray-800 rounded-lg cursor-pointer"
                   />
-                  <span className="block text-[9px] font-mono text-gray-400 text-right">
+                  <span className="block text-[9px] font-mono text-gray-500 text-right">
                     {Math.round((downPayment / totalEstimatedCost) * 100)}% of total cost
                   </span>
                 </div>
 
                 {/* Interest rate slider */}
                 <div className="space-y-2">
-                  <div className="flex justify-between text-xs font-semibold text-gray-500 font-sans">
+                  <div className="flex justify-between text-xs font-semibold text-gray-400 font-sans">
                     <span>Interest Rate p.a.</span>
-                    <span className="font-mono text-brand-primary">{interestRate}%</span>
+                    <span className="font-mono text-white">{interestRate}%</span>
                   </div>
                   <input
                     type="range"
@@ -268,18 +270,18 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
                     step="0.05"
                     value={interestRate}
                     onChange={(e) => setInterestRate(parseFloat(e.target.value))}
-                    className="w-full accent-brand-accent h-1.5 bg-gray-200 rounded-lg cursor-pointer"
+                    className="w-full accent-brand-accent h-1.5 bg-gray-800 rounded-lg cursor-pointer"
                   />
-                  <span className="block text-[9px] font-mono text-gray-400 text-right">
+                  <span className="block text-[9px] font-mono text-gray-500 text-right">
                     Current bank average: ~8.5%
                   </span>
                 </div>
 
                 {/* Tenure years */}
                 <div className="space-y-2">
-                  <div className="flex justify-between text-xs font-semibold text-gray-500 font-sans">
+                  <div className="flex justify-between text-xs font-semibold text-gray-400 font-sans">
                     <span>Payback Tenure</span>
-                    <span className="font-mono text-brand-primary">{loanTenure} Years</span>
+                    <span className="font-mono text-white">{loanTenure} Years</span>
                   </div>
                   <input
                     type="range"
@@ -288,9 +290,9 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
                     step="1"
                     value={loanTenure}
                     onChange={(e) => setLoanTenure(parseInt(e.target.value))}
-                    className="w-full accent-brand-accent h-1.5 bg-gray-200 rounded-lg cursor-pointer"
+                    className="w-full accent-brand-accent h-1.5 bg-gray-800 rounded-lg cursor-pointer"
                   />
-                  <span className="block text-[9px] font-mono text-gray-400 text-right">
+                  <span className="block text-[9px] font-mono text-gray-500 text-right">
                     {loanTenure * 12} monthly installments
                   </span>
                 </div>
@@ -303,88 +305,88 @@ export default function PlotCalculator({ onOpenEnquiryModal }: PlotCalculatorPro
           <div className="lg:col-span-5 space-y-6">
             
             {/* Allotment Receipt Card */}
-            <div className="bg-brand-primary text-white rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden border border-white/5">
+            <div className="bg-[#0D1321] text-white rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden border border-white/5">
               <div className="absolute top-0 right-0 w-48 h-48 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none" />
 
-              <h3 className="font-display font-bold text-lg text-brand-accent mb-6 flex items-center">
+              <h3 className="font-serif font-bold text-lg text-brand-accent mb-6 flex items-center">
                 <Table className="w-5 h-5 mr-2 text-brand-accent" />
                 <span>Estimate Receipt</span>
               </h3>
 
               {/* Items Breakdown */}
-              <div className="space-y-4 font-sans text-sm pb-6 border-b border-white/10">
+              <div className="space-y-4 font-sans text-sm pb-6 border-b border-white/5">
                 <div className="flex justify-between">
                   <span className="text-gray-400">Plot Area</span>
-                  <span className="font-semibold text-gray-100">{sqftArea} sq.ft.</span>
+                  <span className="font-semibold text-white">{sqftArea} sq.ft.</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Project Allotment</span>
-                  <span className="font-semibold text-gray-100">{selectedProject.name}</span>
+                  <span className="font-semibold text-white">{selectedProject.name}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Base Land Value</span>
-                  <span className="font-semibold text-gray-100">{formatRupees(plotCost)}</span>
+                  <span className="font-semibold text-white">{formatRupees(plotCost)}</span>
                 </div>
 
                 {includeConstruction && (
-                  <div className="flex justify-between text-emerald-300">
-                    <span>Bespoke House Build Cost</span>
+                  <div className="flex justify-between text-brand-accent">
+                    <span className="text-gray-400">Bespoke House Build Cost</span>
                     <span className="font-semibold">{formatRupees(constructionCost)}</span>
                   </div>
                 )}
 
                 <div className="flex justify-between">
                   <span className="text-gray-400">Utilities & Infra Connection</span>
-                  <span className="font-semibold text-gray-100">{formatRupees(infraCharges)}</span>
+                  <span className="font-semibold text-white">{formatRupees(infraCharges)}</span>
                 </div>
 
-                <div className="flex justify-between text-amber-400">
-                  <span className="text-amber-400/80">Govt Stamp Duty & Reg.</span>
+                <div className="flex justify-between text-brand-accent">
+                  <span className="text-gray-400">Govt Stamp Duty & Reg.</span>
                   <span className="font-semibold">{formatRupees(stampDutyAndReg)}</span>
                 </div>
               </div>
 
               {/* Total readout */}
               <div className="pt-6 pb-6 flex justify-between items-baseline">
-                <span className="font-display font-bold text-base text-gray-300">Total Est. Cost</span>
-                <span className="font-display font-bold text-2xl text-brand-accent">{formatRupees(totalEstimatedCost)}</span>
+                <span className="font-serif font-bold text-base text-gray-300">Total Est. Cost</span>
+                <span className="font-serif font-bold text-2xl text-brand-accent">{formatRupees(totalEstimatedCost)}</span>
               </div>
 
-              <p className="font-sans text-[10px] text-gray-400 leading-normal leading-relaxed border-t border-white/5 pt-4">
-                *The calculated estimates are non-binding approximations based on standard stamp registration rules in Karnataka (2026). Actual legal stamp paper fees are calculated during physical conveyance registration.
+              <p className="font-sans text-[10px] text-gray-500 leading-relaxed border-t border-white/5 pt-4 font-light">
+                *The calculated estimates are approximations based on standard stamp registration rules. Actual stamp paper fee layouts are generated during the final physical allotment conveyance.
               </p>
             </div>
 
             {/* Monthly EMI readout Card */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-150 shadow-sm space-y-6">
+            <div className="bg-[#0D1321]/40 rounded-3xl p-6 sm:p-8 border border-white/5 shadow-2xl space-y-6 backdrop-blur-md">
               <span className="flex items-center text-xs font-bold text-gray-400 uppercase tracking-wider font-sans">
                 <Coins className="w-4 h-4 text-brand-accent mr-2" />
                 <span>Simulated Monthly EMI</span>
               </span>
 
               <div className="flex items-baseline justify-between">
-                <span className="font-sans text-sm text-gray-500">EMI Monthly Outflow</span>
-                <span className="font-display font-bold text-3xl text-brand-primary">{formatRupees(emi)} / mo.</span>
+                <span className="font-sans text-sm text-gray-400">EMI Monthly Outflow</span>
+                <span className="font-serif font-bold text-2xl sm:text-3xl text-white">{formatRupees(emi)} <span className="text-sm text-gray-500 font-sans font-normal">/ mo.</span></span>
               </div>
 
-              <div className="divide-y divide-gray-100 border-t border-b border-gray-100 py-3 text-xs font-sans text-gray-500 space-y-2.5">
+              <div className="divide-y divide-white/5 border-t border-b border-white/5 py-3 text-xs font-sans text-gray-400 space-y-2.5">
                 <div className="flex justify-between pt-2">
                   <span>Down Payment Outflow</span>
-                  <span className="font-semibold text-brand-primary">{formatRupees(downPayment)}</span>
+                  <span className="font-semibold text-white">{formatRupees(downPayment)}</span>
                 </div>
                 <div className="flex justify-between pt-2">
                   <span>Total Loan Principal</span>
-                  <span className="font-semibold text-brand-primary">{formatRupees(loanPrincipal)}</span>
+                  <span className="font-semibold text-white">{formatRupees(loanPrincipal)}</span>
                 </div>
                 <div className="flex justify-between pt-2">
                   <span>Interest Rate</span>
-                  <span className="font-semibold text-brand-primary">{interestRate}% p.a.</span>
+                  <span className="font-semibold text-white">{interestRate}% p.a.</span>
                 </div>
               </div>
 
               <button
                 onClick={handleBookVisitWithEstimate}
-                className="w-full bg-brand-accent hover:bg-brand-accent/95 text-white font-sans font-bold text-sm py-4 rounded-xl shadow-lg shadow-brand-accent/20 cursor-pointer flex items-center justify-center space-x-2 group transition-all"
+                className="w-full bg-brand-accent hover:bg-brand-accent/90 text-white font-sans font-bold text-sm py-4 rounded-xl shadow-lg shadow-brand-accent/20 cursor-pointer flex items-center justify-center space-x-2 group transition-all"
               >
                 <span>Request Allotment with Estimate</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
