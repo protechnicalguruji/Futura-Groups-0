@@ -60,7 +60,7 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
   const budgetOptions = ['< 50 Lakhs', '50 Lakhs - 1 Cr', '> 1 Cr'];
 
   return (
-    <section id="home" className="relative h-screen min-h-[700px] overflow-hidden bg-brand-primary">
+    <section id="home" className="relative min-h-screen lg:h-screen lg:min-h-[850px] xl:min-h-[920px] overflow-hidden bg-brand-primary flex flex-col w-full">
       {/* Background Image Slideshow */}
       {slides.map((slide, index) => (
         <div
@@ -80,7 +80,7 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
       ))}
 
       {/* Hero Content Container */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center pt-24 z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center pt-32 pb-16 md:pb-48 lg:pb-48 xl:pb-44 z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column (Content) */}
@@ -94,7 +94,7 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
             </div>
 
             {/* Title */}
-            <h1 className="font-serif font-semibold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white tracking-wide leading-[1.15] drop-shadow-md">
+            <h1 className="font-serif font-semibold text-3xl sm:text-4xl lg:text-4xl xl:text-5xl text-white tracking-tight leading-tight lg:leading-[1.2] drop-shadow-md">
               {slides[currentSlide].title.split(' ').map((word, i) => {
                 // Highlight words like 'Premium', 'Bespoke', 'Comfort', 'Dreams', 'Luxury', 'Secure', 'Custom', 'Elite'
                 const highlightWords = ['Premium', 'Bespoke', 'Comfort', 'Dreams', 'Luxury', 'Secure', 'Custom', 'Elite'];
@@ -108,12 +108,12 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
             </h1>
 
             {/* Description */}
-            <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed max-w-xl font-light">
+            <p className="font-sans text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed max-w-xl font-light">
               {slides[currentSlide].description}
             </p>
 
             {/* Interactive Badge Pills */}
-            <div className="flex flex-wrap gap-2.5 pt-4">
+            <div className="flex flex-wrap gap-2 pt-3 max-w-2xl">
               {[
                 { icon: '⭐', text: '4.9/5 Google Rating' },
                 { icon: '👥', text: '500+ Gated Plot Owners' },
@@ -123,7 +123,7 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
               ].map((badge, bIdx) => (
                 <span
                   key={bIdx}
-                  className="inline-flex items-center space-x-1.5 border border-white/5 bg-white/[0.04] backdrop-blur-sm rounded-full py-1.5 px-3.5 text-xs text-gray-300 font-sans tracking-wide"
+                  className="inline-flex items-center space-x-1.5 border border-white/5 bg-white/[0.04] backdrop-blur-sm rounded-full py-1 px-3 text-xs text-gray-300 font-sans tracking-wide"
                 >
                   <span className="text-xs">{badge.icon}</span>
                   <span className="font-medium text-[10px] sm:text-xs">{badge.text}</span>

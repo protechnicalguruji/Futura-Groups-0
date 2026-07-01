@@ -125,7 +125,7 @@ export default function EnquiryForm({ preFilledInterest = '', isModal = false, o
   };
 
   return (
-    <div className={`bg-[#0D1321] text-white rounded-3xl overflow-hidden ${isModal ? '' : 'p-6 sm:p-10 border border-white/5 shadow-2xl royal-shadow'}`}>
+    <div className={`bg-[#0D1321] text-white rounded-3xl overflow-hidden ${isModal ? '' : 'p-5 sm:p-6 lg:p-5 xl:p-8 border border-white/5 shadow-2xl royal-shadow'}`}>
       
       {/* If form submitted successfully */}
       {submitSuccess ? (
@@ -181,8 +181,8 @@ export default function EnquiryForm({ preFilledInterest = '', isModal = false, o
             <h3 className="font-serif font-bold text-xl sm:text-2xl text-white">
               {isModal ? 'Secure Allotment Callback' : 'Connect with Futura Groups'}
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-gray-400 leading-normal mt-1 font-light">
-              Submit your contact details. Our legal experts and relationship managers will contact you within 2 business hours.
+            <p className="font-sans text-xs text-gray-400 leading-normal mt-1 font-light">
+              Our relationship managers will contact you within 2 business hours.
             </p>
           </div>
 
@@ -201,7 +201,7 @@ export default function EnquiryForm({ preFilledInterest = '', isModal = false, o
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="e.g. Rahul Sharma"
-                  className={`w-full bg-[#05080E]/70 border rounded-xl py-3 pl-11 pr-4 text-sm font-sans font-medium text-white outline-none placeholder-gray-600 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all ${
+                  className={`w-full bg-[#05080E]/70 border rounded-xl py-2.5 pl-11 pr-4 text-sm font-sans font-medium text-white outline-none placeholder-gray-600 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all ${
                     errors.name ? 'border-red-400/50 focus:border-red-400' : 'border-white/5'
                   }`}
                 />
@@ -223,7 +223,7 @@ export default function EnquiryForm({ preFilledInterest = '', isModal = false, o
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="e.g. rahul@gmail.com"
-                    className={`w-full bg-[#05080E]/70 border rounded-xl py-3 pl-11 pr-4 text-sm font-sans font-medium text-white outline-none placeholder-gray-600 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all ${
+                    className={`w-full bg-[#05080E]/70 border rounded-xl py-2.5 pl-11 pr-4 text-sm font-sans font-medium text-white outline-none placeholder-gray-600 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all ${
                       errors.email ? 'border-red-400/50 focus:border-red-400' : 'border-white/5'
                     }`}
                   />
@@ -244,7 +244,7 @@ export default function EnquiryForm({ preFilledInterest = '', isModal = false, o
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="10-Digit Mobile"
-                    className={`w-full bg-[#05080E]/70 border rounded-xl py-3 pl-11 pr-4 text-sm font-sans font-medium text-white outline-none placeholder-gray-600 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all ${
+                    className={`w-full bg-[#05080E]/70 border rounded-xl py-2.5 pl-11 pr-4 text-sm font-sans font-medium text-white outline-none placeholder-gray-600 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all ${
                       errors.phone ? 'border-red-400/50 focus:border-red-400' : 'border-white/5'
                     }`}
                   />
@@ -264,7 +264,7 @@ export default function EnquiryForm({ preFilledInterest = '', isModal = false, o
                   name="projectInterest"
                   value={formData.projectInterest}
                   onChange={handleInputChange}
-                  className={`w-full bg-[#05080E]/70 border rounded-xl py-3 pl-11 pr-4 text-sm font-sans font-medium text-white outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all ${
+                  className={`w-full bg-[#05080E]/70 border rounded-xl py-2.5 pl-11 pr-4 text-sm font-sans font-medium text-white outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all ${
                     errors.projectInterest ? 'border-red-400/50 focus:border-red-400' : 'border-white/5'
                   }`}
                 >
@@ -304,9 +304,9 @@ export default function EnquiryForm({ preFilledInterest = '', isModal = false, o
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  rows={3}
+                  rows={2}
                   placeholder="E.g. I would like to schedule a virtual site tour this Sunday."
-                  className="w-full bg-[#05080E]/70 border border-white/5 rounded-xl py-3.5 pl-11 pr-4 text-sm font-sans font-medium text-white outline-none placeholder-gray-600 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all"
+                  className="w-full bg-[#05080E]/70 border border-white/5 rounded-xl py-2.5 pl-11 pr-4 text-sm font-sans font-medium text-white outline-none placeholder-gray-600 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all"
                 />
               </div>
             </div>
@@ -315,7 +315,7 @@ export default function EnquiryForm({ preFilledInterest = '', isModal = false, o
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full bg-brand-accent hover:bg-brand-accent/95 disabled:bg-gray-700 text-white font-sans font-bold text-sm py-4 rounded-xl shadow-lg shadow-brand-accent/20 cursor-pointer flex items-center justify-center space-x-2 transition-all`}
+              className={`w-full bg-brand-accent hover:bg-brand-accent/95 disabled:bg-gray-700 text-white font-sans font-bold text-sm py-3 rounded-xl shadow-lg shadow-brand-accent/20 cursor-pointer flex items-center justify-center space-x-2 transition-all`}
             >
               {isSubmitting ? (
                 <>
