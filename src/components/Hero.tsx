@@ -4,7 +4,7 @@ import { PROJECTS_DATA } from '../data/mockData';
 import EnquiryForm from './EnquiryForm';
 
 interface HeroProps {
-  onSearch: (filters: { location: string; status: string }) => void;
+  onSearch: (filters: { location: string; status: string; minPrice: number; maxPrice: number }) => void;
   onOpenEnquiry: () => void;
 }
 
@@ -43,10 +43,15 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
   const [locationFilter, setLocationFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('Buy');
-  const [budgetFilter, setBudgetFilter] = useState('');
+  const [priceRange, setPriceRange] = useState<[number, number]>([30, 80]); // in Lakhs (covers our 36L to 58L properties)
 
   const handleSearchClick = () => {
-    onSearch({ location: locationFilter, status: statusFilter });
+    onSearch({
+      location: locationFilter,
+      status: statusFilter,
+      minPrice: priceRange[0],
+      maxPrice: priceRange[1]
+    });
     const projectsSec = document.getElementById('projects');
     if (projectsSec) {
       const yOffset = -80;
@@ -154,8 +159,8 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
       </div>
 
         {/* Real Estate Quick Filter Form (Responsive layout) */}
-        <div className="absolute bottom-12 left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 max-w-5xl mx-auto bg-[#0D1321]/95 backdrop-blur shadow-2xl rounded-3xl p-6 hidden md:block border border-white/10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
+        <div className="relative md:absolute md:bottom-12 md:left-4 md:right-4 lg:left-8 lg:right-8 max-w-5xl mx-4 md:mx-auto bg-[#0D1321]/95 backdrop-blur shadow-2xl rounded-3xl p-6 border border-white/10 z-20 mt-8 md:mt-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 items-end">
             <div>
               <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 font-sans">
                 Looking For
@@ -192,21 +197,59 @@ export default function Hero({ onSearch, onOpenEnquiry }: HeroProps) {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 font-sans">
-                Budget
-              </label>
-              <select
-                value={budgetFilter}
-                onChange={(e) => setBudgetFilter(e.target.value)}
-                className="w-full bg-[#05080E] border border-white/10 rounded-lg py-3 px-4 text-sm font-medium text-white outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all font-sans animate-fade-in"
-              >
-                <option value="" className="bg-[#0D1321]">Any</option>
-                {budgetOptions.map((b) => (
-                  <option key={b} value={b} className="bg-[#0D1321]">
-                    {b}
-                  </option>
-                ))}
-              </select>
+              <div className="flex justify-between items-center mb-2">
+                <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider font-sans">
+                  Price Range
+                </label>
+                <span className="font-sans text-xs font-bold text-brand-accent tracking-wide">
+                  ₹{priceRange[0]}L - {priceRange[1] === 100 ? '1.0 Cr+' : `₹${priceRange[1]} L`}
+                </span>
+              </div>
+              <div className="relative w-full h-12 flex items-center bg-[#05080E] border border-white/10 rounded-lg px-4">
+                <div className="relative w-full flex items-center">
+                  {/* Track Background */}
+                  <div className="absolute inset-x-0 h-1 bg-white/10 rounded-full" />
+                  
+                  {/* Active Highlight Track */}
+                  <div
+                    className="absolute h-1 bg-gradient-to-r from-brand-accent to-[#c39b50] rounded-full pointer-events-none"
+                    style={{
+                      left: `${priceRange[0]}%`,
+                      right: `${100 - priceRange[1]}%`,
+                    }}
+                  />
+                  
+                  {/* Double Range Slider */}
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="2"
+                    value={priceRange[0]}
+                    onChange={(e) => {
+                      const value = Math.min(Number(e.target.value), priceRange[1] - 10);
+                      setPriceRange([value, priceRange[1]]);
+                    }}
+                    className="absolute inset-x-0 w-full h-1 appearance-none bg-transparent pointer-events-none cursor-pointer focus:outline-none 
+                      [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-brand-accent [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:transition-all [&::-webkit-slider-thumb]:hover:scale-125
+                      [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-brand-accent [&::-moz-range-thumb]:shadow-lg"
+                  />
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="2"
+                    value={priceRange[1]}
+                    onChange={(e) => {
+                      const value = Math.max(Number(e.target.value), priceRange[0] + 10);
+                      setPriceRange([priceRange[0], value]);
+                    }}
+                    className="absolute inset-x-0 w-full h-1 appearance-none bg-transparent pointer-events-none cursor-pointer focus:outline-none 
+                      [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-brand-accent [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:transition-all [&::-webkit-slider-thumb]:hover:scale-125
+                      [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-brand-accent [&::-moz-range-thumb]:shadow-lg"
+                  />
+                </div>
+              </div>
             </div>
 
             <button

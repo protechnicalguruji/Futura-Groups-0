@@ -26,7 +26,9 @@ export default function App() {
   // Hero Quick Search filters
   const [filters, setFilters] = useState({
     location: '',
-    status: ''
+    status: '',
+    minPrice: 0,
+    maxPrice: 100
   });
 
   // Track scroll position to update active navbar link
@@ -62,7 +64,7 @@ export default function App() {
     setEnquiryPrefill('');
   };
 
-  const handleSearchFilters = (newFilters: { location: string; status: string }) => {
+  const handleSearchFilters = (newFilters: { location: string; status: string; minPrice: number; maxPrice: number }) => {
     setFilters(newFilters);
   };
 
@@ -92,6 +94,8 @@ export default function App() {
           onOpenEnquiryModal={handleOpenEnquiryModal}
           locationFilter={filters.location}
           statusFilter={filters.status}
+          minPriceFilter={filters.minPrice}
+          maxPriceFilter={filters.maxPrice}
         />
 
         {/* Property Categories section */}

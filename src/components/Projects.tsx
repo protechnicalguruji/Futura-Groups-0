@@ -7,9 +7,17 @@ interface ProjectsProps {
   onOpenEnquiryModal: (projectName: string) => void;
   locationFilter: string;
   statusFilter: string;
+  minPriceFilter?: number;
+  maxPriceFilter?: number;
 }
 
-export default function Projects({ onOpenEnquiryModal, locationFilter, statusFilter }: ProjectsProps) {
+export default function Projects({
+  onOpenEnquiryModal,
+  locationFilter,
+  statusFilter,
+  minPriceFilter = 0,
+  maxPriceFilter = 100
+}: ProjectsProps) {
   const [selectedProjectId, setSelectedProjectId] = useState<string>('futura-meadows');
   const [showMasterplan, setShowMasterplan] = useState(false);
   const [selectedPlot, setSelectedPlot] = useState<string | null>(null);
@@ -18,11 +26,16 @@ export default function Projects({ onOpenEnquiryModal, locationFilter, statusFil
   const filteredProjects = PROJECTS_DATA.filter((p) => {
     const matchLoc = locationFilter ? p.location === locationFilter : true;
     const matchStatus = statusFilter ? p.status === statusFilter : true;
-    return matchLoc && matchStatus;
+    
+    const priceInLakhs = p.priceValue / 100000;
+    const matchMin = priceInLakhs >= minPriceFilter;
+    const matchMax = maxPriceFilter === 100 ? true : priceInLakhs <= maxPriceFilter;
+    
+    return matchLoc && matchStatus && matchMin && matchMax;
   });
 
   const selectedProject =
-    PROJECTS_DATA.find((p) => p.id === selectedProjectId) || PROJECTS_DATA[0];
+    filteredProjects.find((p) => p.id === selectedProjectId) || filteredProjects[0];
 
   // Simulated Masterplan plots data
   const plotsList = Array.from({ length: 24 }, (_, i) => {
@@ -75,12 +88,12 @@ export default function Projects({ onOpenEnquiryModal, locationFilter, statusFil
 
           {/* Quick Select Buttons */}
           <div className="flex flex-wrap gap-2">
-            {PROJECTS_DATA.map((proj) => (
+            {filteredProjects.map((proj) => (
               <button
                 key={proj.id}
                 onClick={() => setSelectedProjectId(proj.id)}
                 className={`px-4 py-2.5 rounded-xl font-sans font-bold text-xs tracking-wide transition-all cursor-pointer ${
-                  selectedProjectId === proj.id
+                  selectedProject?.id === proj.id
                     ? 'bg-brand-accent text-white shadow-lg shadow-brand-accent/25 border border-brand-accent/30'
                     : 'bg-[#05080E]/60 text-gray-400 border border-white/5 hover:text-white hover:bg-[#05080E]/90'
                 }`}
@@ -92,7 +105,24 @@ export default function Projects({ onOpenEnquiryModal, locationFilter, statusFil
         </div>
 
         {/* Project Focus Display */}
-        {selectedProject ? (
+        {!selectedProject ? (
+          <div className="bg-[#05080E]/40 border border-white/5 rounded-3xl p-12 text-center max-w-xl mx-auto animate-fade-in relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-accent/30 to-transparent" />
+            <Info className="w-12 h-12 text-brand-accent mx-auto mb-4 opacity-80" />
+            <h3 className="font-serif font-bold text-xl text-white mb-2">No Premium Gated Layouts Found</h3>
+            <p className="font-sans text-sm text-gray-400 mb-6 font-light leading-relaxed">
+              We couldn't find any premium plots in this price range or location. Try resetting your price slider or contact our advisor at <strong className="text-brand-accent">+91 88845 44588</strong> for custom projects.
+            </p>
+            <button
+              onClick={() => {
+                window.location.reload();
+              }}
+              className="bg-brand-accent hover:bg-brand-accent/90 text-white font-sans font-bold text-xs px-6 py-3 rounded-xl transition-all cursor-pointer"
+            >
+              Reset All Search Filters
+            </button>
+          </div>
+        ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             
             {/* Visual Media Showcase & Highlights */}
@@ -218,10 +248,6 @@ export default function Projects({ onOpenEnquiryModal, locationFilter, statusFil
                 </div>
               </div>
             </div>
-          </div>
-        ) : (
-          <div className="text-center bg-[#05080E]/60 p-12 rounded-3xl border border-white/5">
-            <p className="font-sans text-gray-400">No projects found matching the current criteria.</p>
           </div>
         )}
       </div>
