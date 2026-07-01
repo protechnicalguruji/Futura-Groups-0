@@ -15,6 +15,7 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import EnquiryForm from './components/EnquiryForm';
+import AIChatbot from './components/AIChatbot';
 import { X, Phone, Building2 } from 'lucide-react';
 
 export default function App() {
@@ -199,6 +200,9 @@ export default function App() {
           </a>
         </div>
       </div>
+
+      {/* 6. AI Property Advisor Chatbot */}
+      <AIChatbot />
 
     </div>
   );
